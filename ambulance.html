@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Call an Ambulance</title>
+    <style>
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            margin: 30px;
+            padding: 20px 20px;
+            font-size: 21px;
+            cursor: pointer;
+            border: none;
+            background-color: #d42424;
+            color: white;
+            border-radius: 5px;
+            display: block;
+            width: 300px;
+        }
+
+        .button:hover {
+            background-color: #880808;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 50px;
+            color: black; /* Color added for visibility */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgb(199, 26, 26); /* Color added for visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Call an Ambulance 🚑 </div>
+    <div class="close-button" onclick="window.close()">✖</div>
+    <div class="button-container">
+        <button class="button" id="button1">Call Now</button>
+        <button class="button" id="button2">Select Hospital</button>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>

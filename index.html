@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./styles/formstyles.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,300&family=Open+Sans&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+
+.form-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+.pop-up-bg {
+  overflow: hidden;
+  height: calc(100vh - 85px);
+  width: 100vw;
+  background-color: rgba(10, 10, 10, 0.5);
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 85px;
+  display: none;
+}
+
+.popup {
+  width: 427px;
+  height: 231px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popup .text {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+
+.form-area {
+      --formelement-height: 60px;
+      --keyColor: #1976d2;
+      width: 300px;
+      color: #999;
+    }
+
+    .searchInput {
+      position: relative;
+      overflow: hidden;
+      height: var(--formelement-height);
+    }
+
+    .add-symptoms {
+      height: var(--formelement-height);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: left;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .add-symptoms:hover {
+      color: #48435c;
+    }
+
+    .add-symptoms img {
+      padding-right: 1rem;
+    }
+
+    .add-symptoms:hover img {
+      filter: invert(25%) sepia(10%) saturate(1470%) hue-rotate(211deg) brightness(95%) contrast(86%);
+      text-decoration: underline;
+    }
+
+    .searchInput input {
+      width: 100%;
+      height: 100%;
+      color: #000;
+      padding-top: 20px;
+      border: none;
+      outline: none;
+      border: none;
+      background-color: #fff;
+    }
+
+    .searchInput label {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      border-bottom: #ccc 1px solid;
+    }
+
+    .searchInput label::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border-bottom: 3px solid var(--keyColor);
+      transform: translateX(-100%);
+      transition: all 0.3s ease;
+    }
+
+    .content-name {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      padding-bottom: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .searchInput input:focus {
+      outline: none;
+    }
+
+    .searchInput input:focus + .label-name .content-name,
+    .searchInput input:valid + .label-name .content-name {
+      transform: translateY(-90%);
+      font-size: 14px;
+      left: 0px;
+      color: var(--keyColor);
+    }
+
+    .searchInput input:focus + .label-name::after,
+    .searchInput input:valid + .label-name::after {
+      transform: translateX(0%);
+    }
+
+    .searchInput:focus-within + img {
+      filter: invert(53%) sepia(97%) saturate(285%) hue-rotate(215deg) brightness(111%) contrast(83%);
+    }
+
+    .form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 50%;
+      padding: 0.25rem 0;
+    }
+
+    .button-see-results {
+      background: #1976d2;
+      width: 12rem;
+      height: 3.4rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 66px;
+      color: #fff;
+      transition: 1s;
+    }
+
+    .button-see-results:hover {
+      background: #1976D2(244, 59%, 63%);
+    }
+
+    .btn-container {
+      height: var(--formelement-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dropdown-container {
+      position: relative;
+    }
+
+    .dropdown-options {
+      position: absolute;
+      width: 300px;
+    }
+
+    .dropdown-options ul {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+      padding: 0;
+      border-radius: 10px;
+      display: none;
+      min-width: 200px;
+    }
+
+    .dropdown-options ul li {
+      padding: 0.25rem;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .dropdown-options ul li:hover {
+      background-color: hsla(244, 59%, 73%, 0.25);
+      color: #333;
+    }
+    
+    /* Your provided internal styles */
+.custom-element {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.custom-element p {
+  color: #333;
+}
+
+.custom-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+    * 
+    
+    {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    main,
+    .full-screen-width {
+      min-height: calc(100vh - 85px);
+    }
+
+    li {
+      display: inline;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    p {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      height: 85px;
+      position: sticky;
+      background-color: #fff;
+      top: 0;
+      z-index: 1;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: row;
+      font-family: "Merriweather", serif;
+    }
+
+    .logo h1 {
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      font-family: "Merriweather", serif;
+    }
+
+    header ul li {
+      margin-left: 3rem;
+    }
+
+    .underline,
+    .underline:hover {
+      border-bottom: 2px solid black;
+    }
+
+    header ul li:hover {
+      font-weight: bold;
+    }
+
+    .header-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 30px;
+    }
+
+    .dropdown-options ul {
+      height: 150px;
+      overflow-y: scroll;
+    }
+
+    .error {
+      color: #941818;
+      font-size: 14px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+
+    .error img {
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .text-area,
+    .image-area {
+      width: 50%;
+    }
+
+    .text-area {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 8rem;
+    }
+
+    .text-area p {
+      font-size: 1.5rem;
+      text-align: justify;
+      padding-bottom: 2rem;
+    }
+
+    .button-area {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-grey {
+      background: hsl(252, 16%, 31%);
+      border-radius: 1.5rem;
+      color: #fff;
+      width: 150px;
+      padding: 1rem;
+      box-sizing: content-box;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .btn-grey:hover {
+      background: hsl(252, 16%, 21%);
+    }
+
+    .image-area {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cards-section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    .card img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -40%);
+    }
+
+    .card .text {
+      position: absolute;
+      top: 27%;
+      padding: 1rem;
+    }
+
+    .card h2 {
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      color: #1976d2;
+      border-bottom: solid 3px #1976d2;
+    }
+
+    .card p {
+      font-size: 1.25rem;
+      padding-top: 1rem;
+    }
+
+    footer {
+      background-color: #1976d2;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    footer p {
+      display: flex;
+      align-items: center;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .mui-contained-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #3f51b5;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .mui-contained-button:hover {
+      background-color: #283593;
+    }
+
+    
+   </style>
+  <title>Symptom checker</title>
+</head>
+<body style="background-color: #ffcccc;">
+  <header>
+    <div class="header-row">
+      <div style="display: flex; align-items: center">
+        <img src="./images/mhlogo.png" alt="Logo" width="30" height="30" className="d-inline-block align-top mh">
+        <h3 style="display: inline-block; margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; margin-left: 5px;">HealthEase</h3>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-title">CHECK YOUR SYMPTOMS</div>
+    <div class="card" style="background-color: white">
+      <div style="padding-left: 50px; padding-right: 50px">
+        
+
+        <div class="form-area">
+          <div class="error">
+            <img src="./images/cross.svg" alt="cross" /> Please fill out all fields correctly
+          </div>
+          <div class="searchInput">
+            <input type="text" name="year-of-birth" required />
+            <label for="year-of-birth" class="label-name">
+              <span class="content-name"> Year of Birth </span>
+            </label>
+          </div>
+          <div class="searchInput">
+            <input type="text" name="gender" required />
+            <label for="gender" class="label-name">
+              <span class="content-name"> Gender </span>
+            </label>
+          </div>
+
+          <div class="all-symptoms-autogenerate">
+            <div class="dropdown-container">
+              <div class="searchInput">
+                <input class="dropdown" type="text" name="Symptoms" required />
+                <label for="Symptoms" class="label-name">
+                  <span class="content-name"> Symptoms </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown-options">
+            <ul>
+              <!-- Options will be populated dynamically -->
+            </ul>
+          </div>
+          <div class="add-symptoms">Add More Symptoms</div>
+          <button class="mui-contained-button button-see-results" id="see-results-btn" style="margin-bottom: 30px; font-size: large">
+            See Results
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // JavaScript for showing dropdown options
+    document.addEventListener("DOMContentLoaded", function () {
+      const symptomInput = document.querySelector(".dropdown");
+      const dropdownOptions = document.querySelector(".dropdown-options");
+
+      symptomInput.addEventListener("focus", function () {
+        dropdownOptions.style.display = "block";
+      });
+
+      symptomInput.addEventListener("blur", function () {
+        setTimeout(() => {
+          dropdownOptions.style.display = "none";
+        }, 200);
+      });
+    });
+  </script>
+
+  <script>
+    // Script to handle "See Results" button click
+    document.addEventListener('DOMContentLoaded', function() {
+      const seeResultsBtn = document.getElementById('see-results-btn');
+
+      seeResultsBtn.addEventListener('click', function() {
+        // Check if required fields are empty
+        const yearOfBirthInput = document.querySelector('input[name="year-of-birth"]');
+        const genderInput = document.querySelector('input[name="gender"]');
+
+        if (yearOfBirthInput.value.trim() === '' || genderInput.value.trim() === '') {
+          // Display error message
+          const errorDiv = document.querySelector('.error');
+          errorDiv.style.display = 'block';
+          return; // Stop further execution
+        }
+
+        // If all required fields are filled, redirect to results page
+        window.location.href = 'results.html';
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const addSymptomsButton = document.querySelector('.add-symptoms');
+      const autoGenerateSymptoms = document.querySelector('.all-symptoms-autogenerate');
+
+      addSymptomsButton.addEventListener('click', function() {
+        const newSymptomField = document.createElement('div');
+        newSymptomField.classList.add('dropdown-container');
+
+        const newSymptomInput = document.createElement('div');
+        newSymptomInput.classList.add('searchInput');
+        newSymptomInput.innerHTML = `
+          <input class="dropdown" type="text" name="Symptoms" required />
+          <label for="Symptoms" class="label-name">
+            <span class="content-name"> Symptoms </span>
+          </label>
+        `;
+
+        newSymptomField.appendChild(newSymptomInput);
+        autoGenerateSymptoms.appendChild(newSymptomField);
+
+        // Add event listener to the new symptom input field
+        const newSymptomInputField = newSymptomInput.querySelector('.dropdown');
+        newSymptomInputField.addEventListener('focus', function() {
+          document.querySelector('.dropdown-options').style.display = 'flex';
+        });
+
+        newSymptomInputField.addEventListener('blur', function() {
+          setTimeout(() => {
+            document.querySelector('.dropdown-options').style.display = 'none';
+          }, 200);
+        });
+      });
+    });
+  </script>
+
+  <!-- Script to handle symptom field dropdown -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Populate dropdown options
+      const dropdownOptionsList = document.querySelector('.dropdown-options ul');
+      const symptoms = ["Fever", "Cough", "Headache", "Fatigue", "Sore Throat", "Runny Nose", "Shortness of Breath",
+                        "Nausea", "Vomiting", "Diarrhea", "Abdominal Pain", "Chest Pain", "Joint Pain", "Back Pain",
+                        "Muscle Aches", "Dizziness", "Difficulty Swallowing", "Rash", "Swollen Lymph Nodes", "Weight Loss"];
+      symptoms.forEach(symptom => {
+        const listItem = document.createElement('li');
+        listItem.innerText = symptom;
+        dropdownOptionsList.appendChild(listItem);
+        listItem.addEventListener('click', function() {
+          const symptomField = this.closest('.dropdown-container').querySelector('.dropdown');
+          symptomField.value = this.innerText;
+          const dropdownOptions = this.closest('.dropdown-options');
+          dropdownOptions.style.display = 'none';
+        });
+      });
+
+      // Add event listener to toggle dropdown display
+      const symptomInput = document.querySelector('.dropdown');
+      const dropdownOptions = document.querySelector('.dropdown-options');
+      
+      symptomInput.addEventListener('focus', function() {
+        dropdownOptions.style.display = 'block';
+      });
+
+      symptomInput.addEventListener('blur', function() {
+        setTimeout(() => {
+          dropdownOptions.style.display = 'none';
+        }, 200);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthEase - Your Pathway to Well-being</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+     body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+    .jumbotron {
+      background-color: #ffcccc; /* Light Pink */
+      color: #343a40; /* Dark Text */
+      padding: 200px 0; /* Adjusted Padding */
+      text-align: center;
+      margin-bottom: 50px; /* Add margin to create space between jumbotron and buttons */
+    }
+    .jumbotron p {
+      font-size: 20px;
+    }
+    .container-middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(50vh - 100px); /* Adjusted Height */
+    }
+    .logo-image {
+      max-width: 50%;
+      height: auto;
+    }
+    .btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px; /* Add margin between subtitle and buttons */
+    }
+    
+    
+    /* Adjust the dropdown */
+    /* .login-dropdown,
+    .signup-dropdown {
+      width: 220px; /* Adjusted width */
+    
+  </style>
+</head>
+<body>
+  <div class="jumbotron">
+    <img src="logo.jpg" alt="HealthEase Logo" class="logo-image">
+    <p>Your health, simplified.</p>
+    <button id="getStartedBtn" class="btn btn-primary">Get Started</button>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Add event listener to the "Get Started" button
+    document.getElementById("getStartedBtn").addEventListener("click", function() {
+      // Redirect to dashboard.html
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>

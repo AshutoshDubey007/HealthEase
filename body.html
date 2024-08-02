@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Form</title>
+    <style>
+        /* Styles for the popup form */
+        .popup {
+            /* display: none; */
+            /* width: 20px; */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            width: 300px;
+        }
+        
+        /* Styles for the overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 20px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        /* Styles for the form elements */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        /* Styles for the submit button */
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- <button onclick="openPopup()">Open Popup</button> -->
+
+<div id="popup" class="popup">
+    <h2>Select Symptoms</h2>
+    <div class="form-group">
+        <label for="head-symptoms">Head Symptoms:</label>
+        <select id="head-symptoms">
+            <option value="">Select</option>
+            <option value="Headache">Headache</option>
+            <option value="Swelling">Swelling</option>
+            <option value="Dizziness">Dizziness</option>
+        </select>
+    </div>
+    <div id="additional-symptoms"></div>
+    <button onclick="addMoreSymptoms()">Add More Symptoms</button>
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+<script>
+    function openPopup() {
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function addMoreSymptoms() {
+        const additionalSymptoms = document.getElementById("additional-symptoms");
+        const select = document.createElement("select");
+        const options = ["Headache", "Migraine", "Dizziness", "Nausea", "Fatigue"]; // You can add more options here
+        options.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option;
+            optionElement.textContent = option;
+            select.appendChild(optionElement);
+        });
+        additionalSymptoms.appendChild(select);
+    }
+
+    function submitForm() {
+        const headSymptom = document.getElementById("head-symptoms").value;
+        const additionalSymptoms = document.querySelectorAll("#additional-symptoms select");
+        let selectedSymptoms = [headSymptom];
+        additionalSymptoms.forEach(select => {
+            selectedSymptoms.push(select.value);
+        });
+        // Check if "dizziness", "nausea", and "headache" are selected together
+        if (selectedSymptoms.includes("Dizziness") && selectedSymptoms.includes("Nausea") && selectedSymptoms.includes("Headache")) {
+            window.location.href = "final.html"; // Redirect to final.html
+        } else {
+            // You can add additional logic here if needed
+            // For now, redirect to result.html
+            window.location.href = "result.html";
+        }
+    }
+</script>
+
+</body>
+</html>

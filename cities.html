@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select State</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .popup {
+        /* display: none; */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    select, button {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div id="statePopup" class="popup">
+    <div class="popup-content">
+        <h2>Select State</h2>
+        <form id="stateForm">
+            <select id="stateSelect" onchange="toggleCityOptions()">
+                <option value="">Select State</option>
+                <option value="mp">Madhya Pradesh</option>
+                <option value="up">Uttar Pradesh</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="punjab">Punjab</option>
+            </select>
+            <select id="citySelect" style="display: none;">
+                <option value="">Select City</option>
+                <!-- Options for MP cities -->
+                <option value="gwalior">Gwalior</option>
+                <option value="bhopal">Bhopal</option>
+                <option value="morena">Morena</option>
+                <option value="indore">Indore</option>
+                <option value="shivpuri">Shivpuri</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- <button onclick="openStatePopup()">Open State Popup</button> -->
+
+<script>
+    function openStatePopup() {
+        document.getElementById("statePopup").style.display = "block";
+    }
+
+    function toggleCityOptions() {
+        var stateSelect = document.getElementById("stateSelect");
+        var citySelect = document.getElementById("citySelect");
+        if (stateSelect.value === "mp") {
+            citySelect.style.display = "block";
+        } else {
+            citySelect.style.display = "none";
+        }
+    }
+
+    document.getElementById("stateForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var stateSelect = document.getElementById("stateSelect").value;
+        var citySelect = document.getElementById("citySelect").value;
+        if (stateSelect === "mp" && citySelect === "gwalior") {
+            window.location.href = "hospitals.html"; // Redirect to hospitals.html for MP and Gwalior
+        } else {
+            alert("Redirect logic for other states/cities goes here");
+        }
+    });
+</script>
+
+</body>
+</html>

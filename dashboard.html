@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fdfbfb;
+    }
+
+    .dashboard {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fcfbfb;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 20px 40px; 
+        font-size: 18px;
+        border: none;
+        background-color: #f7aeae;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 23%; 
+        box-sizing: border-box; 
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 60vh; 
+    }
+
+    .video-container iframe {
+        width: 70%; 
+        height: 100%; 
+        border-radius: 8px; 
+    }
+
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.4); 
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; 
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="dashboard">
+    <div class="row">
+        <button id="Profile">Profile</button>
+        <button id="Appointment">Appointment</button>
+        <button id="About">About</button> <!-- Added "About" button -->
+        <button id="Help">Help</button> <!-- Added "Help" button -->
+    </div>
+    <div class="row">
+        <button id="Symptoms Checker">Symptoms Checker</button>
+        <button id="Call an Ambulance">Call an Ambulance</button>
+    </div>
+</div>
+<div class="video-container">
+    <iframe width="40" height="3" src="https://www.youtube.com/embed/VgDytOsG6Xo" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- The Modal for Help -->
+<div id="helpModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>You can reach us at:</p>
+
+    <ul>
+        
+         <li><a href="ashutoshkdubey007@gmail.com">Email</a></li>
+         <li><a href="7067581520">Phone</a></li>
+    </ul>
+    </div>
+</div>
+
+<!-- The Modal for About -->
+<div id="aboutModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p><h2>Empowering Your Health Journey</h2>
+            <h4>Welcome to HealthEase, where we believe that understanding your health is the first step to taking control of it.
+            Our platform is designed to provide you with accurate information about your symptoms, guide you through possible diseases, and connect you with expert doctors at nearby government hospitals.
+            conveniently schedule appointments with specialized doctors who can provide you with the care you need.</h4> <h4>We are committed to providing you with accurate information and connecting you with quality healthcare professionals.
+
+            Take control of your health today. Explore our website to learn more about your symptoms, find the right healthcare services, and schedule appointments with ease.</h4> </p>
+    </div>
+</div>
+
+<script>
+    // Get the modals
+    var helpModal = document.getElementById("helpModal");
+    var aboutModal = document.getElementById("aboutModal");
+
+    // Get the button that opens the modals
+    var helpBtn = document.getElementById("Help");
+    var aboutBtn = document.getElementById("About");
+    var profileBtn = document.getElementById("Profile"); // Added profile button
+
+    // Get the <span> elements that close the modals
+    var helpSpan = document.getElementsByClassName("close")[0];
+    var aboutSpan = document.getElementsByClassName("close")[1];
+
+    // When the user clicks the Help button, open the Help modal
+    helpBtn.onclick = function() {
+        helpModal.style.display = "block";
+    }
+
+    // When the user clicks the About button, open the About modal
+    aboutBtn.onclick = function() {
+        aboutModal.style.display = "block";
+    }
+
+    // When the user clicks the Profile button, redirect to the profile page
+    profileBtn.onclick = function() {
+        window.location.href = "profile.html"; // Replace "profile.html" with the actual path to your profile page
+    }
+
+    // When the user clicks on <span> (x), close the modals
+    helpSpan.onclick = function() {
+        helpModal.style.display = "none";
+    }
+
+    aboutSpan.onclick = function() {
+        aboutModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modals, close them
+    window.onclick = function(event) {
+        if (event.target == helpModal) {
+            helpModal.style.display = "none";
+        }
+        if (event.target == aboutModal) {
+            aboutModal.style.display = "none";
+        }
+    }
+
+    document.getElementById("Call an Ambulance").addEventListener("click", function() {
+        window.open("ambulance.html", "_blank");
+    });
+</script>
+
+<script>
+  // Get the button for checking symptoms
+  var symptomsBtn = document.getElementById("Symptoms Checker");
+
+  // When the user clicks the Check Symptoms button, redirect to firstform.html
+  symptomsBtn.onclick = function() {
+      window.location.href = "firstform.html";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Selection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#redirectButton {
+    margin-top: 20px;
+}
+
+.alert {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="date"],
+    select,
+    button {
+        width: 100%;
+    }
+}
+
+.success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 255, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-popup .message {
+            font-size: 18px;
+            color: #fff;
+            margin-left: 10px;
+        }
+
+</style>
+
+<body>
+    <div class="container">
+        <h1>Select Date and Time Slot</h1>
+        <form id="dateTimeForm">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" min="" required>
+
+            <label for="time">Select Time Slot:</label>
+            <select id="time">
+                <option value="10-12">10 AM - 12 PM</option>
+                <option value="2-4">2 PM - 4 PM</option>
+                <option value="6-8">6 PM - 8 PM</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const dateInput = document.getElementById('date');
+        dateInput.min = new Date().toISOString().split('T')[0]; // Set min date to today
+    
+        document.getElementById('dateTimeForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const selectedDate = new Date(dateInput.value);
+            const now = new Date();
+            if (selectedDate < now) {
+                alert('Please select a date that is today or a future date.');
+                return;
+            }
+            const selectedTime = document.getElementById('time').value;
+            alert('Selected Date: ' + selectedDate.toLocaleDateString() + '\nSelected Time Slot: ' + selectedTime);
+            // Show booking successful message
+            const successMessage = document.createElement('div');
+            successMessage.textContent = 'Booking Successful';
+            successMessage.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 255, 0, 0.7); padding: 20px; border-radius: 10px; z-index: 9999;';
+            document.body.appendChild(successMessage);
+            // Redirect to receipt.html after 3 seconds
+            setTimeout(function () {
+                window.location.href = 'receipt.html';
+            }, 3000);
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Receipt</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your custom CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .receipt-info {
+            margin-bottom: 20px;
+        }
+
+        .receipt-info p {
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="logo.jpg" alt="Your Website Logo" class="logo">
+        <h1>Hospital Appointment Receipt</h1>
+        <div class="receipt-info">
+            <!-- Script to extract query parameters and populate receipt -->
+            <script>
+                // Function to extract query parameters from URL
+                function getParameterByName(name, url) {
+                    if (!url) url = window.location.href;
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                        results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+                // Extracting query parameters
+                var patientName = getParameterByName('patientName');
+                var gender = getParameterByName('gender');
+                var yearOfBirth = getParameterByName('yearOfBirth');
+                var dateAndTimeSlot = getParameterByName('dateAndTimeSlot');
+
+                // Populating receipt with extracted information
+                document.write('<p><strong>Patient Name:</strong> ' + patientName + '</p>');
+                document.write('<p><strong>Gender:</strong> ' + gender + '</p>');
+                document.write('<p><strong>Year of Birth:</strong> ' + yearOfBirth + '</p>');
+                document.write('<p><strong>Date and Time Slot:</strong> ' + dateAndTimeSlot + '</p>');
+            </script>
+
+            <!-- Application Number (You can remove this) -->
+            <p><strong>Application Number:</strong> ABC123XYZ</p>
+        </div>
+    </div>
+</body>
+
+</html>

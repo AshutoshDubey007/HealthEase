@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Disease</th>
+            <th>Accuracy</th>
+            <th>Department</th>
+            <th>Book Appointment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Migraine</td>
+            <td>60%</td>
+            <td>Neurology</td>
+            <td><button class="button" onclick="redirectToCities()">Get in Line</button></td>
+        </tr>
+        <tr>
+            <td>Brain Tumour</td>
+            <td>27%</td>
+            <td>Neurology</td>
+            <td><button class="button" onclick="redirectToCities()">Get in Line</button></td>
+        </tr>
+        <tr>
+            <td>Normal Headache</td>
+            <td>13%</td>
+            <td>Neurology</td>
+            <td><button class="button" onclick="redirectToCities()">Get in Line</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function redirectToCities() {
+        window.location.href = "cities.html";
+    }
+</script>
+
+</body>
+</html>

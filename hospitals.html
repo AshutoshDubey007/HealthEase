@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospitals</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hospital {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 45%;
+        float: left;
+    }
+
+    .hospital img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .hospital-details {
+        margin-top: 10px;
+    }
+
+    .hospital-address {
+        font-weight: bold;
+    }
+
+    .map-container {
+        margin-top: 10px;
+        width: 100%;
+        height: 200px; /* Adjust height as needed */
+        overflow: hidden;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .book-appointment-btn {
+        float: right;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .book-appointment-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="hospital">
+    <h2>Thatipur Government Hospital & NRC</h2>
+    <img src="thatipur.jpg" alt="Thatipur Hospital Image">
+    <div class="hospital-details">
+        <p class="hospital-address">Address: Chambal Colony, Thatipur, Gwalior, Madhya Pradesh 474011</p>
+        <!-- Google Maps Embed API for Thatipur Government Hospital & NRC -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.797021713877!2d78.16555651510955!3d26.213217683398483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747137a6db0a19%3A0xd81391b726a38b58!2sThatipur%20Government%20Hospital%20%26%20NRC!5e0!3m2!1sen!2sin!4v1649494474856!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <button class="book-appointment-btn" onclick="bookAppointment('Thatipur Government Hospital & NRC', 'Chambal Colony, Thatipur, Gwalior, Madhya Pradesh 474011')">Book Appointment</button>
+
+    </div>
+</div>
+
+<div class="hospital">
+    <h2>Jaya Arogya Hospital Group</h2>
+    <img src="jaya.jpg" alt="Jaya Arogya Hospital Image">
+    <div class="hospital-details">
+        <p class="hospital-address">Address: J. A. Hospital Campus, Lashkar, Gwalior, Madhya Pradesh 474009</p>
+        <!-- Google Maps Embed API for Jaya Arogya Hospital Group -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.8761496711774!2d78.17487641510951!3d26.210378283402268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747136ef79d5b9%3A0x5e16589f2a098e57!2sJaya%20Arogya%20Hospital%20Group!5e0!3m2!1sen!2sin!4v1649494489265!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <button class="book-appointment-btn" onclick="bookAppointment('Jaya Arogya Hospital Group', 'J. A. Hospital Campus, Lashkar, Gwalior, Madhya Pradesh 474009')">Book Appointment</button>
+
+    </div>
+</div>
+
+<div class="hospital">
+    <h2>New Jaya Arogya Hospital</h2>
+    <img src="new.jpg" alt="New Jaya Arogya Hospital Image">
+    <div class="hospital-details">
+        <p class="hospital-address">Address: Vakil Colony, Amkhoh, Gwalior, Madhya Pradesh 474001</p>
+        <!-- Google Maps Embed API for New Jaya Arogya Hospital -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.204566133053!2d78.16906151510878!3d26.1962916834116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3974700c7de013ef%3A0xe6d00483e79211c7!2sNew%20Jaya%20Arogya%20Hospital!5e0!3m2!1sen!2sin!4v1649494506924!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <button class="book-appointment-btn" onclick="bookAppointment('New Jaya Arogya Hospital', 'Vakil Colony, Amkhoh, Gwalior, Madhya Pradesh 474001')">Book Appointment</button>
+
+    </div>
+</div>
+
+<script>
+    function bookAppointment(hospitalName, hospitalAddress) {
+        // Construct the URL with query parameters
+        const url = 'receipt.html?hospitalName=' + encodeURIComponent(hospitalName) + '&hospitalAddress=' + encodeURIComponent(hospitalAddress);
+        // Redirect to receipt.html
+        window.location.href = url;
+    }
+</script>
+
+
+
+</body>
+</html>
